@@ -9,16 +9,17 @@ url='http://pkg-shadow.alioth.debian.org/'
 license=('BSD')
 groups=('base')
 depends=('bash' 'pam' 'acl')
+conflicts=('shadow')
 backup=(etc/login.defs
         etc/pam.d/{chage,passwd,shadow,useradd,usermod,userdel}
         etc/pam.d/{chpasswd,newusers,groupadd,groupdel,groupmod}
         etc/pam.d/{chgpasswd,groupmems}
         etc/default/useradd)
-provides=shadow
+provides=('shadow')
 #to create debug symbols as well, add debug in the options
 options=(strip)
 install='shadow.install'
-source=("http://pkg-shadow.alioth.debian.org/releases/shadow-$pkgver.tar.xz"{,.sig}
+source=("http://pkg-shadow.alioth.debian.org/releases/shadow-$pkgver.tar.xz"
         LICENSE
         chgpasswd
         chpasswd
@@ -34,7 +35,6 @@ source=("http://pkg-shadow.alioth.debian.org/releases/shadow-$pkgver.tar.xz"{,.s
 	username-allow-capitals.patch
 )
 sha1sums=('0917cbadd4ce0c7c36670e5ecd37bbed92e6d82d'
-          'SKIP'
           '33a6cf1e44a1410e5c9726c89e5de68b78f5f922'
           '4ad0e059406a305c8640ed30d93c2a1f62c2f4ad'
           '12427b1ca92a9b85ca8202239f0d9f50198b818f'
